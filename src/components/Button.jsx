@@ -1,4 +1,4 @@
-import "/WorkSpace/React/Proyecto2/Clima/Weather/src/Button.css"
+import "/src/Button.css"
 
 function Button({changeTheme}) {
 
