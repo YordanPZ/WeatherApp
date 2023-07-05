@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 
 function CurrentWeather({ weather, changeDegree, degree, colors }) {
 
-    const unix = degree ? "° C" : "° F"
+    const unit = degree ? "° C" : "° F"
     const cToF = degree ? "Farenheit" : "Celsius"
     const city = `${weather.name?.trimEnd()}`
     const country = `${weather.sys?.country}`
@@ -12,20 +12,20 @@ function CurrentWeather({ weather, changeDegree, degree, colors }) {
     const humidity = ` Humidity: ${weather.main?.humidity}%`
 
     const feelsLike = degree
-        ? `Feels Like: ${Math.floor(weather.main?.feels_like - 273.15)}${unix}`
-        : `Feels Like: ${Math.floor((weather.main?.feels_like - 273.15) * 1.8 + 32)}${unix}`
+        ? `Feels Like: ${Math.floor(weather.main?.feels_like - 273.15)}${unit}`
+        : `Feels Like: ${Math.floor((weather.main?.feels_like - 273.15) * 1.8 + 32)}${unit}`
 
     const degreesWeather = degree
-        ? `${Math.floor(weather.main?.temp - 273.15)}${unix}`
-        : `${Math.floor((weather.main?.temp - 273.15) * 1.8 + 32)}${unix}`
+        ? `${Math.floor(weather.main?.temp - 273.15)}${unit}`
+        : `${Math.floor((weather.main?.temp - 273.15) * 1.8 + 32)}${unit}`
 
     const tempMax = degree
-        ? `Max: ${Math.floor(weather.main?.temp_max - 273.15)}${unix}`
-        : `Max: ${Math.floor((weather.main?.temp_max - 273.15) * 1.8 + 32)}${unix}`
+        ? `Max: ${Math.floor(weather.main?.temp_max - 273.15)}${unit}`
+        : `Max: ${Math.floor((weather.main?.temp_max - 273.15) * 1.8 + 32)}${unit}`
 
     const tempMin = degree
-        ? `Min: ${Math.floor(weather.main?.temp_min - 273.15)}${unix}`
-        : `Min: ${Math.floor((weather.main?.temp_min - 273.15) * 1.8 + 32)}${unix}`
+        ? `Min: ${Math.floor(weather.main?.temp_min - 273.15)}${unit}`
+        : `Min: ${Math.floor((weather.main?.temp_min - 273.15) * 1.8 + 32)}${unit}`
 
     function KeyMotionH2({ degreesWeather }) {
         const [key, setKey] = useState(0)
