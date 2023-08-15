@@ -64,7 +64,6 @@ function App() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		//console.log(city)
 
 		if (city) {
 			SetIsActual(false)

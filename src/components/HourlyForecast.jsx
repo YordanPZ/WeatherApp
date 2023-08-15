@@ -11,7 +11,7 @@ function HourlyForecast({ weather, degree, colors }) {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
                 style={colors} className="later__container">
-                <p>Forecast</p>
+                <p>Forecast (Hourly)</p>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0 }}

@@ -65,7 +65,6 @@ function CurrentWeather({ weather, changeDegree, degree, colors }) {
                     <motion.img
                         animate={{ y: [10, 0, 10], scale: [1, 0.8, 1] }}
                         transition={{ delay: 1, duration: 6, repeat: Infinity, }}
-
                         src={icon} alt="weather.png" />
                 </div>
                 <p>{description}</p>
