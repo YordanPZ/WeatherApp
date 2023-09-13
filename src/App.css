@@ -148,6 +148,11 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    text-align: center;
+    align-items: center;
+}
+.div__forecast-data__day-name{
+    font-size: 3.4rem;
 }
 
 .div__forecast-data>div {
@@ -343,7 +348,7 @@ main>div {
     }
 
     .icon__container>div>p {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .icon__container .div__icon img {
