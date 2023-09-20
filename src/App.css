@@ -301,23 +301,29 @@ main>div {
 .current__weahter>button:hover {
     cursor: pointer;
 }
+.form__city {
+    gap: 5rem;
+    margin-top: 2rem;
+}
 
 
+@media (width <=400px) {
+    .iconss{
+        gap: 0.3rem;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
 @media (width >=600px) {
-
-    .input,
-    .btn__input {
-        transform: scale(1.2);
-    }
-
-    .form__city {
-        gap: 3rem;
-        margin-top: 1rem;
-    }
 
     .current__weahter>h1 {
         font-size: 4rem;
 
+    }
+    .form__city {
+        gap: 5rem;
+        margin-top: 2rem;
     }
 
     .hourly__forecast {

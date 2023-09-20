@@ -5,7 +5,6 @@ import CurrentWeather from "./components/CurrentWeather"
 import HourlyForecast from "./components/HourlyForecast"
 import WeeklyWeather from "./components/WeeklyWeather"
 import Button from "./components/Button"
-import CityForm from "./components/CityForm"
 import Loader from "./components/Loader"
 import Autocomplete from "./components/SearchAutocomplete"
 
@@ -15,7 +14,6 @@ function App() {
   const [degree, SetDegree] = useState(true)
   const [isNight, SetIsNight] = useState(true)
   const [isActual, SetIsActual] = useState(true)
-  const [city, setCity] = useState("")
   const [latitud, setLatitud] = useState("")
   const [longitud, setLongitud] = useState("")
   const [showLoader, setShowLoader] = useState(true)
