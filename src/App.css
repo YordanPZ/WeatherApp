@@ -11,6 +11,28 @@ body {
     width: 100%;
     height: 100%;
 }
+:root {
+    --scroll-track-day: rgba(48, 136, 225, 0.563);
+    --scroll-track-night: rgba(85, 55, 162, 0.615);
+}
+body::-webkit-scrollbar-track {
+    background: var(--scroll-track-day);
+}
+
+body.night-mode::-webkit-scrollbar-track {
+    background: var(--scroll-track-night);
+}
+
+::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: rgba(85, 55, 162, 0.794);
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: rgb(255, 255, 255);
+}
 
 html {
     height: 100vh;
@@ -223,11 +245,11 @@ main>div {
     align-items: center;
     margin-top: 1rem;
     background-color: transparent;
+    margin: auto;
+    width: 40vw;
 }
 
 .seach__bar>div {
-    background-color: rgba(85, 55, 162, 0.37);
-    width: 90%;
     height: 3rem;
     border-radius: 20px;
     display: flex;
@@ -279,7 +301,6 @@ main>div {
 .current__weahter>button:hover {
     cursor: pointer;
 }
-
 
 
 @media (width >=600px) {

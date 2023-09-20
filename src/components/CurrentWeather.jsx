@@ -54,7 +54,7 @@ function CurrentWeather({ weather, changeDegree, degree, colors }) {
 
   return (
     <>
-      <motion.div
+      <motion.div style={colors}
         initial={{ opacity: 0, filter: backInOut }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}

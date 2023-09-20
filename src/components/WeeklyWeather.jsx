@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 function WeeklyWeather({ weather, degree, colors }) {
   const formattedData = weather?.list?.reduce((acc, day) => {
     const dateObj = new Date(day.dt_txt)
-    const dayName = dateObj.toLocaleDateString("es-ES", { weekday: "long" })
+    const dayName = dateObj.toLocaleDateString("en-EN", { weekday: "long" })
 
     let existingDay = acc.find((d) => d.day === dayName)
 
@@ -84,7 +84,7 @@ function WeeklyWeather({ weather, degree, colors }) {
         avgTemp: day.avgTemp
       }
     })
-    .slice(1, 6)
+    .slice(1, 5)
 
   const unix = degree ? "° C" : "° F"
   return (
@@ -96,7 +96,7 @@ function WeeklyWeather({ weather, degree, colors }) {
         style={colors}
         className="later__container"
       >
-        <p>Forecast (Weekly)</p>
+        <p>Weekly Forecast </p>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}

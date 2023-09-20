@@ -3,10 +3,11 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import CurrentWeather from "./components/CurrentWeather"
 import HourlyForecast from "./components/HourlyForecast"
+import WeeklyWeather from "./components/WeeklyWeather"
 import Button from "./components/Button"
 import CityForm from "./components/CityForm"
 import Loader from "./components/Loader"
-import WeeklyWeather from "./components/WeeklyWeather"
+import Autocomplete from "./components/SearchAutocomplete"
 
 function App() {
   const [actual, SetActual] = useState({})
@@ -25,8 +26,6 @@ function App() {
         function (position) {
           const lat = position.coords?.latitude
           const long = position.coords?.longitude
-          console.log(lat)
-          console.log(long)
 
           const hourlyForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=e0d6f71c252b07d7cdd10bd9b040387a`
 
@@ -65,28 +64,19 @@ function App() {
         .catch((error) => console.error(error))
     }
   }, [isActual, latitud, longitud])
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-
-    if (city) {
-      SetIsActual(false)
-      const hourlyForecast = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=e0d6f71c252b07d7cdd10bd9b040387a`
-      axios
-        .get(hourlyForecast)
-        .then(
-          (resp) => setLatitud(resp.data[0].lat),
-          axios
-            .get(hourlyForecast)
-            .then((resp) => setLongitud(resp.data[0].lon), setShowLoader(false))
-            .catch((err) => console.log(err))
-        )
-        .catch((error) => console.error(error))
+  
+  useEffect(() => {
+    if (isNight) {
+      document.body.classList.add("night-mode")
+    } else {
+      document.body.classList.remove("night-mode")
     }
-  }
+  }, [isNight])
 
-  const handleChange = (event) => {
-    setCity(event.target.value)
+  const handleSubmit = (searchData) => {
+    SetIsActual(false)
+    setLatitud(searchData.value.split(" ")[0])
+    setLongitud(searchData.value.split(" ")[1])
   }
 
   let theme = isNight ? "/Mountain.jpg" : "/MountainDay.jpg"
@@ -105,6 +95,7 @@ function App() {
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		transition: 500ms;
+    ::-webkit-scrollbar-track:background-color: rgba(48, 136, 225, 0.563);
 	`
   const changeDegree = () => {
     SetDegree(!degree)
@@ -119,13 +110,13 @@ function App() {
         <Loader />
       ) : (
         <main>
-          <section className="seach__bar">
-            <CityForm
+          <div className="seach__bar">
+            <Autocomplete
+              colors={colors}
+              colorsDay={dayColors}
               handleSubmit={handleSubmit}
-              handleChange={handleChange}
-              colors={dayColors}
             />
-          </section>
+          </div>
           <div>
             <Button changeTheme={changeTheme} />
           </div>
@@ -145,11 +136,7 @@ function App() {
             />
           </section>
           <section className="section__forecast">
-            <WeeklyWeather
-              weather={forecast}
-              degree={degree}
-              colors={colors}
-            />
+            <WeeklyWeather weather={forecast} degree={degree} colors={colors} />
           </section>
           <p>YordanLuli</p>
         </main>
