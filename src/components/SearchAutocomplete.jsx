@@ -41,8 +41,9 @@ function Autocomplete({ handleSubmit }) {
       boxShadow: state.isFocused ? "0 0 0 2px #3699FF" : null,
       backgroundColor: "#ffffff",
       color: "black",
-      minWidth: "clamp(40vw, 50vw, 50vw)",
-      fontFamily: "Mitr"
+      minWidth: "clamp(20vw, 60vw, 300px)",
+      fontFamily: "Mitr",
+      maxWidth: "100px"
     }),
     option: (provided, state) => ({
       ...provided,
